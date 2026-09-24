@@ -1,0 +1,170 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  font-family: "Consolas", "Courier New", monospace;
+  user-select: none;
+}
+
+canvas {
+  display: block;
+}
+
+#overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 12, 18, 0.78);
+  backdrop-filter: blur(4px);
+  z-index: 10;
+  cursor: pointer;
+}
+
+#overlay.hidden {
+  display: none;
+}
+
+#overlay .panel {
+  text-align: center;
+  color: #e8eef4;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  padding: 28px 44px;
+  background: rgba(0, 0, 0, 0.55);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
+}
+
+#overlay h1 {
+  margin: 0 0 4px;
+  font-size: 44px;
+  letter-spacing: 8px;
+  color: #8ce06e;
+  text-shadow: 3px 3px 0 #274d1c;
+}
+
+#overlay .sub {
+  color: #93a7b8;
+  font-size: 12px;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+#overlay table {
+  margin: 0 auto 20px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+#overlay td {
+  padding: 3px 12px;
+  text-align: left;
+}
+
+#overlay td:first-child {
+  text-align: right;
+  color: #ffe9a8;
+  font-weight: bold;
+}
+
+#overlay .play {
+  font-size: 16px;
+  letter-spacing: 2px;
+  color: #fff;
+  animation: pulse 1.3s infinite;
+}
+
+@keyframes pulse {
+  50% { opacity: 0.4; }
+}
+
+#crosshair {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 5;
+  mix-blend-mode: difference;
+}
+
+#crosshair::before,
+#crosshair::after {
+  content: "";
+  position: absolute;
+  background: #fff;
+}
+
+#crosshair::before {
+  left: 9px;
+  top: 0;
+  width: 2px;
+  height: 20px;
+}
+
+#crosshair::after {
+  top: 9px;
+  left: 0;
+  height: 2px;
+  width: 20px;
+}
+
+#hotbar {
+  position: fixed;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  z-index: 5;
+}
+
+#hotbar .slot {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  background: rgba(0, 0, 0, 0.35);
+  position: relative;
+}
+
+#hotbar .slot.sel {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+#hotbar .slot canvas {
+  width: 40px;
+  height: 40px;
+  image-rendering: pixelated;
+}
+
+#hotbar .slot .num {
+  position: absolute;
+  top: 1px;
+  left: 4px;
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+#debug {
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  color: #c4e8a4;
+  font-size: 13px;
+  line-height: 1.55;
+  text-shadow: 1px 1px 0 #000;
+  z-index: 5;
+  pointer-events: none;
+  white-space: pre;
+}
